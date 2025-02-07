@@ -1,0 +1,14 @@
+<svg width="30.000000" height="30.000000" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip2_313">
+			<rect id="wallet-fill" width="30.000000" height="30.000000" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<rect id="wallet-fill" width="30.000000" height="30.000000" fill="#FFFFFF" fill-opacity="0"/>
+	<g clip-path="url(#clip2_313)">
+		<path id="矢量 122" d="M2.5 11.25L26.25 11.25C26.58 11.25 26.89 11.38 27.13 11.61C27.36 11.85 27.5 12.16 27.5 12.5L27.5 25C27.5 25.33 27.36 25.64 27.13 25.88C26.89 26.11 26.58 26.25 26.25 26.25L3.75 26.25C3.41 26.25 3.1 26.11 2.86 25.88C2.63 25.64 2.5 25.33 2.5 25L2.5 11.25ZM3.75 3.75L22.5 3.75L22.5 8.75L2.5 8.75L2.5 5C2.5 4.66 2.63 4.35 2.86 4.11C3.1 3.88 3.41 3.75 3.75 3.75L3.75 3.75ZM18.75 17.5L18.75 20L22.5 20L22.5 17.5L18.75 17.5Z" fill="#17181E" fill-opacity="1.000000" fill-rule="evenodd"/>
+	</g>
+</svg>
