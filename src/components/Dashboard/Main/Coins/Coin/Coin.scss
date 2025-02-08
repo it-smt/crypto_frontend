@@ -1,0 +1,71 @@
+.item {
+	padding: 10px 15px;
+	border-radius: 8px;
+	background: rgb(23, 24, 30);
+	margin: 10px 0 0 0;
+	&__row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	&__column {
+		display: flex;
+		align-items: center;
+	}
+	&__index {
+		font-size: 20px;
+		font-weight: 900;
+		line-height: 23px;
+		margin: 0 15px 0 0;
+	}
+	&__icon {
+		width: 30px;
+		height: 30px;
+		margin: 0 15px 0 0;
+	}
+	&__icon img {
+		width: 100%;
+		height: 100%;
+	}
+	&__name {
+		font-size: 18px;
+		font-weight: 900;
+		line-height: 21px;
+		margin: 0 10px 0 0;
+	}
+	&__symbol {
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 18px;
+		font-weight: 900;
+		line-height: 21px;
+	}
+	&__price {
+		color: rgb(255, 255, 255);
+		font-size: 16px;
+		font-weight: 900;
+		line-height: 19px;
+		margin: 0 20px 0 0;
+	}
+	&__btn {
+		color: rgb(255, 255, 255);
+		font-weight: 900;
+		line-height: 16px;
+		padding: 2px 21px;
+		box-sizing: border-box;
+		border: 1px solid rgb(255, 255, 255);
+		border-radius: 10px;
+		transition: all 0.3s ease 0s;
+	}
+	&__btn:hover {
+		opacity: 0.7;
+	}
+	.buy {
+		color: rgb(0, 255, 53);
+		border: 1px solid rgb(0, 255, 53);
+		margin: 0 10px 0 0;
+	}
+	.sell {
+		color: rgb(255, 0, 0);
+		border: 1px solid rgb(255, 0, 0);
+	}
+}

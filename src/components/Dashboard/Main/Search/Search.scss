@@ -1,0 +1,29 @@
+.form {
+	width: 100%;
+	padding: 0 0 10px 0;
+	&__search-label {
+		position: relative;
+	}
+	&__search {
+		width: 100%;
+		padding: 11px 15px;
+		border-radius: 8px;
+		background: rgb(23, 24, 30);
+		color: rgb(255, 255, 255);
+		font-size: 20px;
+		font-weight: 900;
+		line-height: 23px;
+	}
+	&__search::placeholder {
+		color: rgba(255, 255, 255, 0.8);
+	}
+	&__search-icon {
+		position: absolute;
+		top: 50%;
+		right: 15px;
+		transform: translateY(-50%);
+		pointer-events: none;
+	}
+	&__search-icon img {
+	}
+}

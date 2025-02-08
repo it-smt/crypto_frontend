@@ -47,7 +47,7 @@ export default function Profile() {
 				<ul className="profile-menu__list">
 					{profileItems.map((item, i) => {
 						return (
-							<li>
+							<li key={i}>
 								<a href={item.path}>
 									<img src={item.icon} alt="" />
 									{item.title}

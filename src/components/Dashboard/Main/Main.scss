@@ -11,14 +11,6 @@
 		border-radius: 10px;
 		background: rgb(39, 39, 39);
 		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	&__text {
-		color: rgba(255, 255, 255, 0.5);
-		font-size: 50px;
-		font-weight: 900;
-		line-height: 59px;
+		padding: 20px;
 	}
 }
