@@ -1,0 +1,42 @@
+td {
+	padding: 20px 0 0 0;
+}
+
+.item {
+	&__datetime,
+	&__amount,
+	&__coin,
+	&__operation,
+	&__address,
+	&__tx-id {
+		color: rgb(255, 255, 255);
+		font-size: 20px;
+		font-weight: 900;
+		line-height: 23px;
+		background: rgb(39, 39, 39);
+		padding: 18px 20px;
+		text-wrap: nowrap;
+	}
+	&__tx-id {
+		overflow: auto;
+		text-overflow: ellipsis;
+	}
+	&__operation.buy,
+	&__operation.sell {
+		border: none;
+		margin: 0;
+	}
+	&__operation.buy {
+		color: rgb(0, 191, 40);
+	}
+	&__operation.sell {
+		color: rgb(205, 0, 0);
+	}
+
+	.begin {
+		border-radius: 20px 0 0 20px;
+	}
+	.end {
+		border-radius: 0 20px 20px 0;
+	}
+}

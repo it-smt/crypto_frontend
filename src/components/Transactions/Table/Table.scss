@@ -1,5 +1,34 @@
 .table {
-	&__grid {
+	border-collapse: collapse;
+	&__header {
+		text-align: left;
+		color: rgb(255, 255, 255);
+		font-size: 20px;
+		font-weight: 900;
+		line-height: 23px;
+		background: rgb(39, 39, 39);
+		padding: 18px 20px;
+		position: relative;
 	}
-	&__item {}
+	&__header::after {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		transform: translateY(-50%);
+		content: "";
+		width: 2px;
+		height: 32px;
+		background-color: rgb(247, 166, 0);
+		box-shadow: 0px 0px 10px 0px rgb(247, 166, 0);
+	}
+	.begin {
+		border-radius: 20px 0 0 20px;
+	}
+	.end {
+		border-radius: 0 20px 20px 0;
+	}
+	th:last-child &__header::after {
+		width: 0;
+		height: 0;
+	}
 }
