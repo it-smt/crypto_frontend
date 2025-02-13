@@ -9,9 +9,9 @@ export const transactions = [
 	},
 	{
 		datetime: "2024.02.01 12:57:12",
-		amount: 0.000002342,
-		coin: "Bitcoin",
-		operation: "BUY",
+		amount: 1000,
+		coin: "Solana",
+		operation: "SELL",
 		address: "0xb9ae4e88dec0d56861eb31754463835f7836d915",
 		txID: "0xb9ae4e88dec0d56861eb317544...",
 	},

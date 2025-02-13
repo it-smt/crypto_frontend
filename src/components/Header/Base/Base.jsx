@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import logo from "../../../assets/img/icons/logo.svg";
+import logo from "../../../assets/img/icons/Logo.svg";
 import "./Base.scss";
 
 export default function Base({ title }) {

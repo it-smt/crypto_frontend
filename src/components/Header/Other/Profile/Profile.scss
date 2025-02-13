@@ -1,24 +1,12 @@
 .profile {
 	position: relative;
 	&__icon {
-	}
-	&__menu {
-		position: absolute;
-		top: 70px;
-		right: 0;
-	}
-	&__text {
-	}
-}
-
-.profile {
-	position: relative;
-	&__icon {
 		cursor: pointer;
 	}
 }
 .profile-menu {
 	position: absolute;
+	z-index: 100;
 	top: 70px;
 	right: 0;
 	padding: 20px;

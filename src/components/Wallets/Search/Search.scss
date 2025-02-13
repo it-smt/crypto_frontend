@@ -1,0 +1,45 @@
+.search {
+	display: flex;
+	align-items: center;
+	margin: 0 0 30px 0;
+	&__label {
+		display: flex;
+		align-items: center;
+	}
+	&__label:first-child {
+		width: 100%;
+		position: relative;
+		margin: 0 30px 0 0;
+	}
+	&__input {
+		width: 100%;
+		padding: 11px 15px;
+		border-radius: 8px;
+		background: rgb(23, 24, 30);
+		color: rgb(255, 255, 255);
+		font-size: 20px;
+		font-weight: 900;
+		line-height: 23px;
+	}
+	&__input::placeholder {
+		color: rgba(255, 255, 255, 0.8);
+	}
+	&__icon {
+		pointer-events: none;
+		position: absolute;
+		top: 50%;
+		right: 15px;
+		transform: translateY(-50%);
+	}
+	&__checkbox {
+		margin: 0 10px 0 0;
+		width: 20px;
+		height: 20px;
+	}
+	&__checkbox-text {
+		text-wrap: nowrap;
+		color: rgb(255, 255, 255);
+		font-size: 18px;
+		line-height: 21px;
+	}
+}

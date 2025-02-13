@@ -1,6 +1,12 @@
 td {
 	padding: 20px 0 0 0;
 }
+td:nth-child(5) {
+	width: 100%;
+}
+td:nth-child(6) {
+	width: 100%;
+}
 
 .item {
 	&__datetime,
@@ -16,6 +22,7 @@ td {
 		background: rgb(39, 39, 39);
 		padding: 18px 20px;
 		text-wrap: nowrap;
+		width: 100%;
 	}
 	&__tx-id {
 		overflow: auto;
@@ -33,10 +40,30 @@ td {
 		color: rgb(205, 0, 0);
 	}
 
+	&__item {
+		position: relative;
+	}
+
+	&__item::after {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		transform: translateY(-50%);
+		content: "";
+		width: 2px;
+		height: 32px;
+		background-color: rgb(247, 166, 0);
+		box-shadow: 0px 0px 10px 0px rgb(247, 166, 0);
+	}
+
 	.begin {
 		border-radius: 20px 0 0 20px;
 	}
 	.end {
 		border-radius: 0 20px 20px 0;
+	}
+	td:last-child &__item::after {
+		width: 0;
+		height: 0;
 	}
 }
