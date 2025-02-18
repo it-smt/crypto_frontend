@@ -7,6 +7,6 @@ export default defineConfig({
 	server: {
 		host: "0.0.0.0",
 		port: 5173,
-		allowedHosts: ["minestacks.com"]
+		allowedHosts: ["minestacks.com", "localhost", "127.0.0.1"],
 	},
 });
