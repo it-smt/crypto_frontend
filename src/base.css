@@ -1,18 +1,54 @@
 * {
-	font-family: "Roboto", serif;
+	font-family: "Exo 2", sans-serif;
 	font-weight: 400;
 	font-style: normal;
 	color: #ffffff;
 }
 
 body {
-	background: rgb(23, 24, 30);
+	background: rgb(2, 3, 19);
 }
 
 .container {
 	max-width: 1400px;
 	padding: 0 10px;
 	margin: 0 auto;
+}
+
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+}
+
+body::before {
+	content: "";
+	width: 1181px;
+	height: 1181px;
+	background: radial-gradient(
+		50% 50% at 50% 50%,
+		rgba(38, 47, 255, 0.18) 0.804%,
+		rgba(0, 0, 0, 0) 100%
+	);
+	position: absolute;
+	top: -591px;
+	left: -590px;
+	pointer-events: none;
+	z-index: -1;
+}
+body::after {
+	content: "";
+	width: 1181px;
+	height: 1181px;
+	background: radial-gradient(
+		50% 50% at 50% 50%,
+		rgba(38, 47, 255, 0.18) 0.804%,
+		rgba(0, 0, 0, 0) 100%
+	);
+	position: absolute;
+	bottom: -591px;
+	right: -590px;
+	pointer-events: none;
+	z-index: -1;
 }
 
 .wrapper {

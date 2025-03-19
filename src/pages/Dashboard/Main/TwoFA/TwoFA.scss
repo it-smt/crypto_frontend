@@ -1,0 +1,51 @@
+.main__TwoFA {
+	margin: 0 0 30px 0;
+}
+.TwoFA {
+	border-radius: 10px;
+	background: rgba(39, 44, 75, 0.3);
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	&__body {
+		display: flex;
+		flex-direction: column;
+	}
+	&__title {
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 20px;
+		font-weight: 900;
+		line-height: 23px;
+		margin: 0 0 12px 0;
+	}
+	&__text {
+		color: rgba(255, 255, 255, 0.7);
+		font-family: "Inter", sans-serif;
+		font-size: 20px;
+		line-height: 150%;
+		max-width: 610px;
+	}
+	&__btn {
+		color: rgb(255, 255, 255);
+		font-size: 20px;
+		font-weight: 900;
+		line-height: 23px;
+		text-transform: uppercase;
+		border-radius: 10px;
+		background: linear-gradient(
+			135deg,
+			rgb(138, 44, 255) 0%,
+			rgb(107, 5, 234) 100%
+		);
+		padding: 13px 58px;
+		transition: all 0.3s ease 0s;
+	}
+	&__btn:hover {
+		background: linear-gradient(
+			135deg,
+			rgb(107, 5, 234) 0%,
+			rgb(138, 44, 255) 100%
+		);
+	}
+}
