@@ -6,7 +6,7 @@ import "./Wallets.scss";
 
 export default function Wallets() {
 	return (
-		<>
+		<div className="wrapper">
 			<Header />
 			<div className="container">
 				<div className="content wallets">
@@ -18,6 +18,6 @@ export default function Wallets() {
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }

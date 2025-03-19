@@ -7,6 +7,7 @@
 
 body {
 	background: rgb(2, 3, 19);
+	overflow-x: hidden;
 }
 
 .container {
@@ -20,7 +21,7 @@ body {
 	overflow: hidden;
 }
 
-body::before {
+.wrapper::before {
 	content: "";
 	width: 1181px;
 	height: 1181px;
@@ -29,13 +30,13 @@ body::before {
 		rgba(38, 47, 255, 0.18) 0.804%,
 		rgba(0, 0, 0, 0) 100%
 	);
-	position: absolute;
+	position: fixed;
 	top: -591px;
 	left: -590px;
 	pointer-events: none;
 	z-index: -1;
 }
-body::after {
+.wrapper::after {
 	content: "";
 	width: 1181px;
 	height: 1181px;
@@ -44,7 +45,7 @@ body::after {
 		rgba(38, 47, 255, 0.18) 0.804%,
 		rgba(0, 0, 0, 0) 100%
 	);
-	position: absolute;
+	position: fixed;
 	bottom: -591px;
 	right: -590px;
 	pointer-events: none;

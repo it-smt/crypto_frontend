@@ -1,7 +1,8 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import "./Header.scss";
 
 export default function Header() {
+	const location = useLocation();
 	const links = [
 		{ title: "Home", href: "/", icon: "/home.svg" },
 		{ title: "Dashboard", href: "/dashboard", icon: "/dashboard.svg" },
@@ -18,13 +19,23 @@ export default function Header() {
 						minestacks
 					</Link>
 					<div className="header__menu">
+						<div className="header__burger">
+							<span></span>
+						</div>
 						<span></span>
 						<div className="header__menu-row">
 							<ul className="header__list">
 								{links.map((link, i) => {
 									return (
-										<li>
-											<Link to={link.href} className="header__link">
+										<li key={i}>
+											<Link
+												to={link.href}
+												className={
+													link.href === location.pathname
+														? "header__link _active"
+														: "header__link"
+												}
+											>
 												<img src={link.icon} alt="" />
 												{link.title}
 											</Link>
