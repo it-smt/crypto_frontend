@@ -4,6 +4,10 @@ services:
     build: .
     ports:
       - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules  # чтобы не затирались пакеты
+    command: npm run dev
   nginx:
     image: nginx:latest
     ports:
