@@ -7,8 +7,6 @@ services:
     environment:
       - VIRTUAL_HOST=minestacks.com
       - VIRTUAL_PORT=5173
-    depends_on:
-      - nginx
 
   nginx:
     image: nginx:latest
