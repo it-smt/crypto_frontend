@@ -1,0 +1,36 @@
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.chart {
+	background: var(--background-secondary);
+	border-radius: 1.5rem;
+	padding: 1rem;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease;
+}
+
+.chart:hover {
+	transform: translateY(-4px);
+}
+
+.chart--bar {
+	width: 100%;
+}
+
+.chart-pies {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 2rem;
+}
+
+.custom-tooltip {
+	background: #1e1e1e;
+	padding: 0.8rem 1rem;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 0.9rem;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}

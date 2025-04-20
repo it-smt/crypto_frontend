@@ -10,7 +10,7 @@ export default function Coin({ coin, index }) {
 						<img src={coin.image} alt="" />
 					</div>
 					<div className="item__name">{coin.name}</div>
-					<div className="coin__symbol">{coin.symbol}</div>
+					<div className="item__symbol">{coin.symbol}</div>
 				</div>
 				<div className="item__column">
 					<div className="item__price">$ {coin.price}</div>

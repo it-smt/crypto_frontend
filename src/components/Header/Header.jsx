@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 import "./Header.scss";
 
 export default function Header() {
 	const location = useLocation();
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const links = [
 		{ title: "Home", href: "/", icon: "/home.svg" },
 		{ title: "Dashboard", href: "/dashboard", icon: "/dashboard.svg" },
@@ -11,19 +13,39 @@ export default function Header() {
 		{ title: "Transactions", href: "/transactions", icon: "/transactions.svg" },
 	];
 
+	useEffect(() => {
+		if (isMenuOpen) {
+			document.body.classList.add("_lock");
+		} else {
+			document.body.classList.remove("_lock");
+		}
+	});
+
+	const toggleMenu = () => {
+		setIsMenuOpen(!isMenuOpen);
+		if (!isMenuOpen) {
+			document.body.classList.add("_lock");
+		} else {
+			document.body.classList.remove("_lock");
+		}
+	};
+
 	return (
 		<header className="header">
 			<div className="container">
-				<div className="header__row">
+				<div className={`header__row ${isMenuOpen ? "_active" : ""}`}>
 					<Link to={"/"} className="header__logo">
 						minestacks
 					</Link>
 					<div className="header__menu">
-						<div className="header__burger">
+						<div
+							className={`header__burger ${isMenuOpen ? "_active" : ""}`}
+							onClick={toggleMenu}
+						>
 							<span></span>
 						</div>
 						<span></span>
-						<div className="header__menu-row">
+						<div className={`header__menu-row ${isMenuOpen ? "_active" : ""}`}>
 							<ul className="header__list">
 								{links.map((link, i) => {
 									return (

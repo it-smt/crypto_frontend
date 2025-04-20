@@ -27,3 +27,17 @@
 	&__search-icon img {
 	}
 }
+
+@media (max-width: 550px) {
+	.form {
+		padding: 0 0 5px 0;
+		&__search {
+			padding: 8px 10px;
+			font-size: 16px;
+			line-height: 19px;
+		}
+		&__search-icon {
+			right: 10px;
+		}
+	}
+}

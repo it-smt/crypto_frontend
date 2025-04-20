@@ -1,6 +1,13 @@
 .content {
+	margin: 30px 0 20px 0;
 	&__row {
 		display: flex;
 		align-items: center;
+	}
+}
+
+@media (max-width: 950px) {
+	.content {
+		margin: 20px 0 20px 0;
 	}
 }

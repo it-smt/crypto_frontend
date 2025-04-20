@@ -1,8 +1,14 @@
 import "./TwoFA.scss";
+import { motion } from "framer-motion";
 
 export default function TwoFA() {
 	return (
-		<div className="main__TwoFA TwoFA">
+		<motion.div
+			className="main__TwoFA TwoFA"
+			initial={{ y: -100, opacity: 0 }}
+			animate={{ y: 0, opacity: 1 }}
+			transition={{ duration: 0.5, ease: "easeOut" }}
+		>
 			<div className="TwoFA__body">
 				<h3 className="TwoFA__title">
 					Stay Safe! Enable 2-Factor Authentication Now!
@@ -15,6 +21,6 @@ export default function TwoFA() {
 			<a className="TwoFA__btn" href="">
 				Enable 2FA
 			</a>
-		</div>
+		</motion.div>
 	);
 }

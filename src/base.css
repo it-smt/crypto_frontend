@@ -10,6 +10,28 @@ body {
 	overflow-x: hidden;
 }
 
+body._lock {
+	overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+	width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+	background: rgb(2, 3, 19);
+	border-radius: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: linear-gradient(
+		135deg,
+		rgb(138, 44, 255) 0%,
+		rgb(107, 5, 234) 100%
+	);
+	border-radius: 6px;
+}
+
 .container {
 	max-width: 1400px;
 	padding: 0 10px;
