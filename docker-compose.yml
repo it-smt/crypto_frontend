@@ -27,5 +27,4 @@ services:
       - ./nginx/certs:/etc/letsencrypt
       - ./nginx/conf.d:/etc/nginx/conf.d
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-    depends_on:
-      - nginx
+    # Убираем зависимость от web
