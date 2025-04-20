@@ -1,36 +1,110 @@
-.content {
-	display: flex;
-	flex-direction: column;
-	gap: 2rem;
-}
-
-.chart {
-	background: var(--background-secondary);
-	border-radius: 1.5rem;
-	padding: 1rem;
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-	transition: transform 0.3s ease;
-}
-
-.chart:hover {
-	transform: translateY(-4px);
-}
-
-.chart--bar {
-	width: 100%;
-}
-
-.chart-pies {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 2rem;
-}
-
-.custom-tooltip {
-	background: #1e1e1e;
-	padding: 0.8rem 1rem;
-	border-radius: 10px;
-	color: #fff;
-	font-size: 0.9rem;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+.earnings {
+	margin: 30px 0 30px 0;
+	.container {
+		display: block;
+	}
+	&__info {
+		display: flex;
+		gap: 30px;
+		margin: 0 0 30px 0;
+	}
+	&__diagram {
+		border-radius: 20px;
+		background: rgba(255, 255, 255, 0.1);
+		padding: 30px;
+		width: 100%;
+	}
+	&__balance-account {
+	}
+	&__balance {
+		border-radius: 20px;
+		background: rgba(255, 255, 255, 0.1);
+		padding: 20px;
+		margin: 0 0 30px 0;
+	}
+	&__balance-title {
+		text-wrap: nowrap;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0 0 23px 0;
+	}
+	&__balance-title span {
+		color: rgb(255, 255, 255);
+		font-size: 40px;
+		font-weight: 700;
+		line-height: -1px;
+		margin: 0 0 0 10px;
+	}
+	&__balance-amount {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__balance-amount span {
+		color: rgb(46, 189, 133);
+		font-size: 45px;
+		font-weight: 700;
+		line-height: -1px;
+	}
+	&__account {
+		border-radius: 20px;
+		background: rgba(255, 255, 255, 0.1);
+		padding: 20px;
+	}
+	&__account-first {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0 0 15px 0;
+	}
+	&__account-avatar {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		box-shadow: 0px 3px 2px 0px rgba(0, 0, 0, 0.25);
+		background: rgb(255, 255, 255);
+		color: rgb(0, 0, 0);
+		font-size: 35px;
+		font-weight: 700;
+		line-height: -1px;
+	}
+	&__account-email {
+		color: rgb(255, 255, 255);
+		font-size: 24px;
+		font-weight: 900;
+		line-height: 28px;
+	}
+	&__account-second {
+	}
+	&__account-number {
+		color: rgb(255, 255, 255);
+		font-size: 24px;
+		font-weight: 900;
+		line-height: 28px;
+		margin: 0 0 25px 0;
+	}
+	&__account-link {
+		padding: 9px;
+		color: rgb(255, 255, 255);
+		font-size: 18px;
+		font-weight: 900;
+		line-height: 150%;
+		display: block;
+		text-align: center;
+		border-radius: 15px;
+		background: linear-gradient(
+			135deg,
+			rgb(138, 44, 255) 0%,
+			rgb(107, 5, 234) 98.758%
+		);
+	}
+	&__pies {
+		padding: 30px;
+		border-radius: 20px;
+		background: rgba(255, 255, 255, 0.1);
+	}
 }

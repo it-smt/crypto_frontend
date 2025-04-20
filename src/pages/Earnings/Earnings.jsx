@@ -1,55 +1,34 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import {
-	Bar,
-	BarChart,
-	Cell,
-	Pie,
-	PieChart,
-	ResponsiveContainer,
-	Tooltip,
-	XAxis,
-	YAxis,
-} from "recharts";
+import { Link } from "react-router";
 import Header from "../../components/Header/Header";
 import "./Earnings.scss";
-
-// Данные для столбчатой диаграммы
-const barData = [
-	{ name: "Jan", deposit: 400, withdraw: 240 },
-	{ name: "Feb", deposit: 300, withdraw: 139 },
-	{ name: "Mar", deposit: 200, withdraw: 980 },
-	{ name: "Apr", deposit: 278, withdraw: 390 },
-	{ name: "May", deposit: 189, withdraw: 480 },
-];
-
-// Данные для депозитов
-const depositData = [
-	{ name: "BTC", value: 400 },
-	{ name: "ETH", value: 300 },
-	{ name: "USDT", value: 300 },
-];
-
-// Данные для выводов
-const withdrawData = [
-	{ name: "BTC", value: 500 },
-	{ name: "ETH", value: 200 },
-	{ name: "USDT", value: 300 },
-];
-
-// Цвета для секторов
-const COLORS = ["#00c3ff", "#845ec2", "#ffc75f"];
+import EarningsChart from "./EarningsChart";
+import EarningsDonuts from "./EarningsDonuts";
 
 export default function Earnings() {
-	const [activeIndex, setActiveIndex] = useState(null);
+	// Состояние для анимации суммы
+	const [balance, setBalance] = useState(0);
+	const targetBalance = 9000;
 
 	useEffect(() => {
-		// Обновляем активный индекс для анимации
+		// Функция увеличения баланса с задержкой
+		const duration = 2; // продолжительность анимации в секундах
+		const steps = 100; // количество шагов
+		const stepDuration = duration / steps;
+		let currentStep = 0;
+
 		const interval = setInterval(() => {
-			setActiveIndex(prev =>
-				prev === null || prev >= depositData.length - 1 ? 0 : prev + 1
-			);
-		}, 1200);
+			currentStep += 1;
+			const progress = currentStep / steps;
+			const easedProgress =
+				progress < 0.9 ? progress : 1 - Math.pow(1 - progress, 3); // Замедление в конце
+			setBalance(Math.round(targetBalance * easedProgress));
+
+			if (currentStep >= steps) {
+				clearInterval(interval);
+			}
+		}, stepDuration * 1000);
 
 		return () => clearInterval(interval);
 	}, []);
@@ -57,203 +36,116 @@ export default function Earnings() {
 	return (
 		<div className="wrapper">
 			<Header />
-			<div className="container">
-				<div className="content">
-					{/* Столбчатая диаграмма */}
-					<motion.div
-						className="chart chart--bar"
-						initial="hidden"
-						whileInView="visible"
-						viewport={{ once: false, amount: 0.2 }}
-						variants={{
-							hidden: { opacity: 0, y: 40 },
-							visible: {
-								opacity: 1,
-								y: 0,
-								transition: { duration: 0.6, ease: "easeOut" },
-							},
-						}}
-					>
-						<ResponsiveContainer width="100%" height={300}>
-							<BarChart data={barData} barSize={40}>
-								<XAxis dataKey="name" stroke="#ccc" />
-								<YAxis stroke="#ccc" />
-								<Tooltip
-									content={({ active, payload }) => {
-										if (active && payload && payload.length) {
-											return (
-												<div className="custom-tooltip">
-													<p>{payload[0].payload.name}</p>
-													<p>Deposit: {payload[0].payload.deposit}</p>
-													<p>Withdraw: {payload[0].payload.withdraw}</p>
-												</div>
-											);
-										}
-										return null;
-									}}
-								/>
-								<Bar
-									dataKey="deposit"
-									fill="url(#gradDeposit)"
-									radius={[10, 10, 0, 0]}
-									animationDuration={800}
-								/>
-								<Bar
-									dataKey="withdraw"
-									fill="url(#gradWithdraw)"
-									radius={[10, 10, 0, 0]}
-									animationDuration={1000}
-								/>
-								<defs>
-									<linearGradient id="gradDeposit" x1="0" y1="0" x2="0" y2="1">
-										<stop offset="0%" stopColor="#845ec2" stopOpacity={1} />
-										<stop offset="100%" stopColor="#d0bdf4" stopOpacity={1} />
-									</linearGradient>
-									<linearGradient id="gradWithdraw" x1="0" y1="0" x2="0" y2="1">
-										<stop offset="0%" stopColor="#00c3ff" stopOpacity={1} />
-										<stop offset="100%" stopColor="#a2f0ff" stopOpacity={1} />
-									</linearGradient>
-								</defs>
-							</BarChart>
-						</ResponsiveContainer>
-					</motion.div>
+			<div className="earnings">
+				<div className="container">
+					<div className="earnings__info">
+						<motion.div
+							className="earnings__diagram"
+							initial={{ opacity: 0, y: 40 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.6, ease: "easeOut" }}
+							viewport={{ once: true }}
+						>
+							<EarningsChart />
+						</motion.div>
 
-					{/* Пончик для депозитов */}
-					<motion.div
-						className="chart chart--pie"
-						initial={{ opacity: 0, rotate: 180, scale: 0 }}
-						animate={{ opacity: 1, rotate: 0, scale: 1 }}
-						transition={{ duration: 1, ease: "easeOut" }}
-					>
-						<ResponsiveContainer width="100%" height={250}>
-							<PieChart>
-								<Pie
-									data={depositData}
-									dataKey="value"
-									nameKey="name"
-									cx="50%"
-									cy="50%"
-									innerRadius={60}
-									outerRadius={90}
-									fill="#8884d8"
-									paddingAngle={4}
-									activeIndex={activeIndex ?? 0}
-									activeShape={props => (
-										<g>
-											<text
-												x={props.cx}
-												y={props.cy}
-												dy={8}
-												textAnchor="middle"
-												fill="#fff"
-												fontSize={18}
-											>
-												{props.payload.name}
-											</text>
-											<text
-												x={props.cx}
-												y={props.cy}
-												dy={28}
-												textAnchor="middle"
-												fill="#aaa"
-												fontSize={14}
-											>
-												{props.payload.value}
-											</text>
-										</g>
-									)}
-								>
-									{depositData.map((entry, idx) => (
-										<Cell
-											key={`cell-${idx}`}
-											fill={COLORS[idx % COLORS.length]}
-										/>
-									))}
-								</Pie>
-								<Tooltip
-									content={({ active, payload }) => {
-										if (active && payload && payload.length) {
-											return (
-												<div className="custom-tooltip">
-													<p>{payload[0].payload.name}</p>
-													<p>{payload[0].payload.value}</p>
-												</div>
-											);
-										}
-										return null;
+						{/* Анимация для блока с балансом */}
+						<motion.div
+							className="earnings__balance-account"
+							initial={{ opacity: 0, scale: 0.95 }}
+							whileInView={{ opacity: 1, scale: 1 }}
+							transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+							viewport={{ once: true }}
+						>
+							<div className="earnings__balance">
+								{/* Текст "Your balance" с белым цветом и эффектом свечения */}
+								<motion.div
+									className="earnings__balance-title"
+									initial={{ opacity: 0, x: -50 }}
+									whileInView={{ opacity: 1, x: 0 }}
+									transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+									viewport={{ once: true }}
+									style={{
+										color: "#fff",
+										textShadow: "0 0 10px rgba(255, 255, 255, 0.6)",
 									}}
-								/>
-							</PieChart>
-						</ResponsiveContainer>
-					</motion.div>
+								>
+									<img src="/account_balance.svg" alt="" />
+									<span>Your balance</span>
+								</motion.div>
 
-					{/* Пончик для выводов */}
-					<motion.div
-						className="chart chart--pie"
-						initial={{ opacity: 0, rotate: 180, scale: 0 }}
-						animate={{ opacity: 1, rotate: 0, scale: 1 }}
-						transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-					>
-						<ResponsiveContainer width="100%" height={250}>
-							<PieChart>
-								<Pie
-									data={withdrawData}
-									dataKey="value"
-									nameKey="name"
-									cx="50%"
-									cy="50%"
-									innerRadius={60}
-									outerRadius={90}
-									fill="#8884d8"
-									paddingAngle={4}
-									activeIndex={activeIndex ?? 0}
-									activeShape={props => (
-										<g>
-											<text
-												x={props.cx}
-												y={props.cy}
-												dy={8}
-												textAnchor="middle"
-												fill="#fff"
-												fontSize={18}
-											>
-												{props.payload.name}
-											</text>
-											<text
-												x={props.cx}
-												y={props.cy}
-												dy={28}
-												textAnchor="middle"
-												fill="#aaa"
-												fontSize={14}
-											>
-												{props.payload.value}
-											</text>
-										</g>
-									)}
+								{/* Анимация баланса */}
+								<motion.div
+									className="earnings__balance-amount"
+									initial={{ opacity: 0, scale: 0.95 }}
+									whileInView={{ opacity: 1, scale: 1 }}
+									transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
+									viewport={{ once: true }}
 								>
-									{withdrawData.map((entry, idx) => (
-										<Cell
-											key={`cell-${idx}`}
-											fill={COLORS[idx % COLORS.length]}
-										/>
-									))}
-								</Pie>
-								<Tooltip
-									content={({ active, payload }) => {
-										if (active && payload && payload.length) {
-											return (
-												<div className="custom-tooltip">
-													<p>{payload[0].payload.name}</p>
-													<p>{payload[0].payload.value}</p>
-												</div>
-											);
-										}
-										return null;
-									}}
-								/>
-							</PieChart>
-						</ResponsiveContainer>
+									<span>$</span>
+									{/* Число анимируется от 0 до 9000 */}
+									<motion.span
+										initial={{ opacity: 0, scale: 0.8 }}
+										whileInView={{ opacity: 1, scale: 1 }}
+										transition={{
+											duration: 1.5,
+											ease: "easeOut",
+											delay: 0.6,
+											type: "spring",
+											stiffness: 200,
+										}}
+									>
+										{balance}
+									</motion.span>
+								</motion.div>
+							</div>
+
+							{/* Анимация блока с аккаунтом (email, номер, ссылка) */}
+							<motion.div
+								className="earnings__account"
+								initial={{ opacity: 0, y: 30 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.6, ease: "easeOut", delay: 0.7 }}
+								viewport={{ once: true }}
+							>
+								{/* Анимация для email */}
+								<motion.div
+									className="earnings__account-first"
+									initial={{ opacity: 0, x: -30 }}
+									whileInView={{ opacity: 1, x: 0 }}
+									transition={{ duration: 0.5, ease: "easeOut", delay: 0.8 }}
+									viewport={{ once: true }}
+								>
+									<div className="earnings__account-avatar">P</div>
+									<div className="earnings__account-email">email@gmail.com</div>
+								</motion.div>
+
+								{/* Анимация для номера и ссылки */}
+								<motion.div
+									className="earnings__account-second"
+									initial={{ opacity: 0, x: 30 }}
+									whileInView={{ opacity: 1, x: 0 }}
+									transition={{ duration: 0.5, ease: "easeOut", delay: 1 }}
+									viewport={{ once: true }}
+								>
+									<div className="earnings__account-number">+7******5027</div>
+									<Link to={"/"} className="earnings__account-link">
+										Show account
+									</Link>
+								</motion.div>
+							</motion.div>
+						</motion.div>
+					</div>
+
+					{/* Анимация для пончиковых диаграмм */}
+					<motion.div
+						className="earnings__pies"
+						initial={{ opacity: 0, scale: 0.9 }}
+						whileInView={{ opacity: 1, scale: 1 }}
+						transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+						viewport={{ once: true }}
+					>
+						<EarningsDonuts />
 					</motion.div>
 				</div>
 			</div>

@@ -47,10 +47,10 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="wallets" ref={walletsRef}>
+			<section className="wallets-hm" ref={walletsRef}>
 				<div className="container">
 					<motion.div
-						className="wallets__img parallax"
+						className="wallets-hm__img parallax"
 						initial={{ opacity: 0, x: -100 }}
 						animate={
 							walletsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }
@@ -60,7 +60,7 @@ export default function Home() {
 						<img src="/wallets_block.png" alt="" />
 					</motion.div>
 					<motion.h1
-						className="wallets__title glow"
+						className="wallets-hm__title glow"
 						initial={{ opacity: 0, y: 30 }}
 						animate={
 							walletsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
@@ -79,35 +79,35 @@ export default function Home() {
 						animate={walletsInView ? { opacity: 1 } : { opacity: 0 }}
 						transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
 					>
-						<Link to={"/wallets"} className="wallets__link">
+						<Link to={"/wallets"} className="wallets-hm__link">
 							To wallets
 						</Link>
 					</motion.div>
 				</div>
 			</section>
 
-			<section className="earnings" ref={earningsRef}>
+			<section className="earnings-hm" ref={earningsRef}>
 				<div className="container">
 					<motion.div
-						className="earnings__body"
+						className="earnings-hm__body"
 						initial={{ opacity: 0, x: 100 }}
 						animate={
 							earningsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }
 						}
 						transition={{ duration: 0.8, ease: "easeOut" }}
 					>
-						<h1 className="earnings__title glow">Track your earnings</h1>
+						<h1 className="earnings-hm__title glow">Track your earnings</h1>
 						<hr />
-						<p className="earnings__subtitle">
+						<p className="earnings-hm__subtitle">
 							You can track how many coins you have withdrawn and how many you
 							have replenished, all in one service.
 						</p>
-						<Link to={"/earnings"} className="earnings__link">
+						<Link to={"/earnings"} className="earnings-hm__link">
 							In earnings
 						</Link>
 					</motion.div>
 					<motion.div
-						className="earnings__img parallax"
+						className="earnings-hm__img parallax"
 						initial={{ opacity: 0, scale: 0.9 }}
 						animate={
 							earningsInView
