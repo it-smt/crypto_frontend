@@ -1,0 +1,41 @@
+.transactions {
+	margin: 30px 0 0 0;
+	display: grid;
+	gap: 20px;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	.transaction {
+		transition: all 0.4s ease 0s;
+		will-change: transform, box-shadow;
+		border-radius: 20px;
+		background: rgba(255, 255, 255, 0.1);
+		padding: 15px;
+		&__title {
+			color: rgb(255, 255, 255);
+			font-size: 24px;
+			font-weight: 800;
+			line-height: 29px;
+			margin: 0 0 10px 0;
+		}
+		&__amount,
+		&__address,
+		&__txid {
+			color: rgb(255, 255, 255);
+			font-size: 16px;
+			margin: 0 0 5px 0;
+			line-height: 20px;
+		}
+		&__status {
+			margin: 20px 0 0 0;
+			display: flex;
+			align-items: center;
+		}
+		&__status img {
+		}
+		&__status span {
+			font-size: 16px;
+			font-weight: 800;
+			line-height: 20px;
+			margin: 0 0 0 5px;
+		}
+	}
+}

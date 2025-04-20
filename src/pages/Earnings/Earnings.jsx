@@ -145,7 +145,7 @@ export default function Earnings() {
 						transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
 						viewport={{ once: true }}
 					>
-						<EarningsDonuts />
+						<EarningsDonuts key={balance > 0 ? "donuts" : "donuts-initial"} />
 					</motion.div>
 				</div>
 			</div>
